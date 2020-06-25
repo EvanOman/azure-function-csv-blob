@@ -4,9 +4,11 @@ from io import StringIO
 import azure.functions as func
 import pandas as pd
 
+from .run import run
+
 
 def main(myblob: func.InputStream):
-    print("GOT DATA")
+    logging.info("GOT DATA")
     input_data = StringIO(myblob.read().decode("utf-8"))
     df = pd.read_csv(input_data)
-    logging.info(f"Number of rows: {len(df)}")
+    logging.info(run(df))
