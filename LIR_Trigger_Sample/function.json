@@ -1,11 +1,18 @@
 {
-  "scriptFile": "__init__.py",
+  "scriptFile": "function.py",
   "bindings": [
     {
-      "name": "myblob",
+      "name": "inputstream",
       "type": "blobTrigger",
       "direction": "in",
-      "path": "test-input/{name}.csv",
+      "path": "test/input/{input_name}.csv",
+      "connection": "AzureWebJobsStorage"
+    },
+    {
+      "name": "outputstream",
+      "type": "blob",
+      "direction": "out",
+      "path": "test/output/{input_name}_analysis.json",
       "connection": "AzureWebJobsStorage"
     }
   ]
